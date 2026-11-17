@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, House, ShieldCheck, Headset, Tag, MessageCircle, Building2, Trees, BedDouble } from "lucide-react";
+import { ArrowRight, House, ShieldCheck, Headset, Tag, MessageCircle, Building2, Trees, BedDouble } from "lucide-react";
 import PropertyCard from "../Components/PropertyCard.jsx";
 import SectionTitle from "../Components/SectionTitle.jsx";
 import { properties, types } from "../Data/properties.js";
@@ -42,15 +42,11 @@ export default function Home() {
             Discover the best properties in prime locations with ease and confidence.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-6">
-            <Link to="/properties" className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-bold text-navy hover:bg-white">
-              Explore Properties <ArrowRight size={16} />
-            </Link>
-            <button type="button" className="group inline-flex items-center gap-3 text-sm font-semibold">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 group-hover:bg-white/15">
-                <Play size={16} className="fill-white" />
-              </span>
-              Watch Video
-            </button>
+           <Link to="/properties"
+           className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-bold text-navy hover:bg-white"
+           >
+             Explore Properties <ArrowRight size={16} />
+           </Link>
           </div>
         </div>
 
