@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout.jsx";
-import Home from "./pages/Home.jsx";
-import Properties from "./pages/Properties.jsx";
-import PropertyDetails from "./pages/PropertyDetails.jsx";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
+import Layout from "./Components/Layout.jsx";
+import Home from "./Pages/Home.jsx";
+import Properties from "./Pages/Properties.jsx";
+import PropertyDetails from "./Pages/PropertyDetails.jsx";
+import About from "./Pages/About.jsx";
+import Contact from "./Pages/Contact.jsx";
 
 export default function App() {
   return (

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Heart, BedDouble, Bath, Ruler, Calendar, MapPin, Check, Phone, ChevronLeft } from "lucide-react";
-import Img from "../components/Img.jsx";
-import PropertyCard from "../components/PropertyCard.jsx";
-import { properties, formatPrice } from "../data/properties.js";
-import { useWishlist } from "../context/Wishlist.jsx";
+import Img from "../Components/Img.jsx";
+import PropertyCard from "../Components/PropertyCard.jsx";
+import { properties, formatPrice } from "../Data/properties.js";
+import { useWishlist } from "../Context/Wishlist.jsx";
 
-const inp = "w-full rounded border border-stone-300 px-3 py-2.5 text-sm focus:border-teal-800 focus:outline-none focus:ring-1 focus:ring-teal-800";
+const inp = "w-full rounded border border-slate-300 px-3 py-2.5 text-sm focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy";
 
 export default function PropertyDetails() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ export default function PropertyDetails() {
     return (
       <div className="mx-auto max-w-6xl px-4 py-24 text-center">
         <h1 className="text-2xl font-bold">Property not found</h1>
-        <Link to="/properties" className="mt-4 inline-block font-semibold text-teal-800 hover:underline">Back to all properties</Link>
+        <Link to="/properties" className="mt-4 inline-block font-semibold text-gold-dark hover:underline">Back to all properties</Link>
       </div>
     );
   }
@@ -33,14 +33,14 @@ export default function PropertyDetails() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <Link to="/properties" className="inline-flex items-center gap-1 text-sm font-semibold text-stone-600 hover:text-teal-800"><ChevronLeft size={16} /> Back to properties</Link>
+      <Link to="/properties" className="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 hover:text-gold-dark"><ChevronLeft size={16} /> Back to properties</Link>
 
       <div className="mt-4 grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <Img src={p.gallery[active]} alt={p.title} className="h-72 w-full rounded-lg sm:h-105" />
           <div className="mt-3 grid grid-cols-4 gap-3">
             {p.gallery.map((src, i) => (
-              <button key={i} onClick={() => setActive(i)} aria-label={`Show image ${i + 1}`} className={`overflow-hidden rounded border-2 ${active === i ? "border-teal-800" : "border-transparent"}`}>
+              <button key={i} onClick={() => setActive(i)} aria-label={`Show image ${i + 1}`} className={`overflow-hidden rounded border-2 ${active === i ? "border-gold" : "border-transparent"}`}>
                 <Img src={src} alt="" className="h-20 w-full" />
               </button>
             ))}
@@ -48,45 +48,45 @@ export default function PropertyDetails() {
 
           <div className="mt-8 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <span className="rounded bg-stone-200 px-2.5 py-1 text-xs font-semibold">For {p.status}</span>
-              <h1 className="mt-3 text-3xl font-extrabold text-stone-900">{p.title}</h1>
-              <p className="mt-1 flex items-center gap-1 text-stone-600"><MapPin size={16} /> {p.address}</p>
+              <span className="rounded bg-gold/20 px-2.5 py-1 text-xs font-bold text-navy">For {p.status}</span>
+              <h1 className="mt-3 text-3xl font-extrabold text-slate-900">{p.title}</h1>
+              <p className="mt-1 flex items-center gap-1 text-slate-600"><MapPin size={16} /> {p.address}</p>
             </div>
             <div className="text-right">
-              <p className="text-3xl font-extrabold text-teal-800">{formatPrice(p.price, p.status)}</p>
-              <button onClick={() => toggle(p.id)} aria-pressed={saved} className="mt-2 inline-flex items-center gap-2 rounded border border-stone-300 px-4 py-2 text-sm font-semibold hover:bg-stone-100">
-                <Heart size={16} className={saved ? "fill-teal-800 text-teal-800" : ""} /> {saved ? "Saved" : "Save to wishlist"}
+              <p className="text-3xl font-extrabold text-navy">{formatPrice(p.price, p.status)}</p>
+              <button onClick={() => toggle(p.id)} aria-pressed={saved} className="mt-2 inline-flex items-center gap-2 rounded border border-slate-300 px-4 py-2 text-sm font-semibold hover:bg-slate-100">
+                <Heart size={16} className={saved ? "fill-gold text-gold" : ""} /> {saved ? "Saved" : "Save to wishlist"}
               </button>
             </div>
           </div>
 
-          <dl className="mt-6 grid grid-cols-2 gap-4 rounded-lg border border-stone-200 bg-white p-5 sm:grid-cols-4">
+          <dl className="mt-6 grid grid-cols-2 gap-4 rounded-lg border border-slate-200 bg-white p-5 sm:grid-cols-4">
             {facts.map(([Icon, l, v]) => (
-              <div key={l}><Icon size={20} className="text-teal-800" /><dt className="mt-2 text-xs text-stone-500">{l}</dt><dd className="font-bold">{v}</dd></div>
+              <div key={l}><Icon size={20} className="text-gold-dark" /><dt className="mt-2 text-xs text-slate-500">{l}</dt><dd className="font-bold">{v}</dd></div>
             ))}
           </dl>
 
           <h2 className="mt-8 text-xl font-bold">About this property</h2>
-          <p className="mt-3 max-w-prose leading-relaxed text-stone-700">{description}</p>
+          <p className="mt-3 max-w-prose leading-relaxed text-slate-700">{description}</p>
 
           <h2 className="mt-8 text-xl font-bold">Amenities</h2>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {amenities.map((a) => <li key={a} className="flex items-center gap-2 text-stone-700"><Check size={16} className="text-teal-800" /> {a}</li>)}
+            {amenities.map((a) => <li key={a} className="flex items-center gap-2 text-slate-700"><Check size={16} className="text-gold-dark" /> {a}</li>)}
           </ul>
         </div>
 
-        <aside className="h-fit rounded-lg border border-stone-200 bg-white p-6 lg:sticky lg:top-24">
-          <p className="text-sm text-stone-500">Listing agent</p>
+        <aside className="h-fit rounded-lg border border-slate-200 bg-white p-6 lg:sticky lg:top-24">
+          <p className="text-sm text-slate-500">Listing agent</p>
           <p className="font-bold">{agent.name}</p>
-          <p className="mt-1 flex items-center gap-2 text-sm text-stone-600"><Phone size={14} /> {agent.phone}</p>
+          <p className="mt-1 flex items-center gap-2 text-sm text-slate-600"><Phone size={14} /> {agent.phone}</p>
           {sent ? (
-            <p className="mt-6 rounded bg-teal-50 p-4 text-sm text-teal-900">Request sent. {agent.name} will contact you within one working day.</p>
+            <p className="mt-6 rounded bg-gold/15 p-4 text-sm text-navy">Request sent. {agent.name} will contact you within one working day.</p>
           ) : (
             <form className="mt-6 space-y-3" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
               <input required className={inp} placeholder="Your name" aria-label="Your name" />
               <input required type="tel" className={inp} placeholder="Phone number" aria-label="Phone number" />
               <textarea className={inp} rows={3} defaultValue={`I'd like to visit ${p.title}.`} aria-label="Message" />
-              <button className="w-full rounded bg-teal-800 py-2.5 text-sm font-semibold text-white hover:bg-teal-900">Request a visit</button>
+              <button className="w-full rounded bg-navy py-2.5 text-sm font-semibold text-white hover:bg-navy-light">Request a visit</button>
             </form>
           )}
         </aside>
