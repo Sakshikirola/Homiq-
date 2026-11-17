@@ -1,16 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0f2038;
-  --color-navy-light: #1c3557;
-  --color-gold: #f0b94a;
-  --color-gold-dark: #a66f0a;
-  --color-mist: #f4f6fa;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --color-ink: #0e3b43;
+  --color-ink-soft: #175862;
+  --color-brass: #c8963e;
+  --color-brass-dark: #8a5f14;
+  --color-paper: #f4f6f5;
 }
 
 body {
-  font-family: 'Manrope', system-ui, sans-serif;
-  color: #1e293b;
-  background: var(--color-mist);
+  font-family: var(--font-sans);
+  color: #1f2a37; 
+  background: var(--color-paper);
+}
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+
+:focus-visible { outline: 2px solid var(--color-brass); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }
