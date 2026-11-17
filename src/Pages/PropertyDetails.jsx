@@ -37,8 +37,7 @@ export default function PropertyDetails() {
 
       <div className="mt-4 grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          {/* MAIN + THUMBNAIL IMAGES: fill `gallery` in data/properties.js */}
-          <Img src={p.gallery[active]} alt={p.title} className="h-72 w-full rounded-lg sm:h-[420px]" />
+          <Img src={p.gallery[active]} alt={p.title} className="h-72 w-full rounded-lg sm:h-105" />
           <div className="mt-3 grid grid-cols-4 gap-3">
             {p.gallery.map((src, i) => (
               <button key={i} onClick={() => setActive(i)} aria-label={`Show image ${i + 1}`} className={`overflow-hidden rounded border-2 ${active === i ? "border-teal-800" : "border-transparent"}`}>

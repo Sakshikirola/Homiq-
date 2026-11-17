@@ -1,52 +1,59 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Search, ShieldCheck, Tag, MessageCircle } from "lucide-react";
-import Img from "../components/Img.jsx";
+import { Link } from "react-router-dom";
+import { ArrowRight, Play, Home as HomeIcon, ShieldCheck, Headset, Tag, MessageCircle } from "lucide-react";
 import PropertyCard from "../components/PropertyCard.jsx";
-import { properties, cities } from "../data/properties.js";
+import { properties } from "../data/properties.js";
 
-const inputCls = "w-full rounded border border-stone-300 bg-white px-3 py-2.5 text-sm focus:border-teal-800 focus:outline-none focus:ring-1 focus:ring-teal-800";
+// HERO BACKGROUND IMAGE: paste your image link between the quotes
+const HERO_IMAGE = "";
+
+const trust = [
+  [HomeIcon, "Trusted by 10K+ Clients"],
+  [ShieldCheck, "Secure & Transparent Deals"],
+  [Headset, "24/7 Customer Support"],
+];
 
 export default function Home() {
-  const nav = useNavigate();
-  const [q, setQ] = useState("");
-  const [status, setStatus] = useState("All");
-  const [city, setCity] = useState("All");
-
-  const submit = (e) => {
-    e.preventDefault();
-    const sp = new URLSearchParams();
-    if (q) sp.set("q", q);
-    if (status !== "All") sp.set("status", status);
-    if (city !== "All") sp.set("city", city);
-    nav(`/properties?${sp.toString()}`);
-  };
-
   const featured = properties.filter((p) => p.featured);
 
   return (
     <>
-      <section className="border-b border-stone-200 bg-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 lg:grid-cols-2">
-          <div>
-            <h1 className="text-4xl font-extrabold leading-tight text-stone-900 sm:text-5xl">Find the home that fits your life</h1>
-            <p className="mt-5 max-w-md text-lg text-stone-600">Browse homes for sale and rent across eight cities, with prices and details laid out clearly.</p>
-            <form onSubmit={submit} className="mt-8 grid gap-3 rounded-lg border border-stone-200 bg-stone-50 p-4 sm:grid-cols-2">
-              <input className={`${inputCls} sm:col-span-2`} placeholder="Search by name, area or city" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search properties" />
-              <select className={inputCls} value={status} onChange={(e) => setStatus(e.target.value)} aria-label="Buy or rent">
-                <option value="All">Buy or rent</option><option value="Sale">Buy</option><option value="Rent">Rent</option>
-              </select>
-              <select className={inputCls} value={city} onChange={(e) => setCity(e.target.value)} aria-label="City">
-                <option value="All">All cities</option>
-                {cities.map((c) => <option key={c}>{c}</option>)}
-              </select>
-              <button className="flex items-center justify-center gap-2 rounded bg-teal-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-900 sm:col-span-2">
-                <Search size={16} /> Search properties
-              </button>
-            </form>
+      <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-stone-800 text-white">
+        <div className="absolute inset-0">
+          {HERO_IMAGE && <img src={HERO_IMAGE} alt="Modern home at dusk" className="h-full w-full object-cover" />}
+          <div className="absolute inset-0 bg-linear-to-r from-stone-950/80 via-stone-950/40 to-stone-950/10" />
+        </div>
+
+        <div className="relative mx-auto w-full max-w-6xl px-4 pb-40 pt-32">
+          <p className="flex items-center gap-4 text-sm tracking-[0.25em] text-stone-200">
+            BUY &middot; SELL &middot; RENT <span className="hidden h-px w-24 bg-stone-300 sm:block" />
+          </p>
+          <h1 className="mt-6 max-w-xl text-5xl font-extrabold leading-[1.1] sm:text-6xl">
+            Find Your <span className="text-amber-300">Dream</span> Home
+          </h1>
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-stone-200">
+            Discover the best properties in prime locations with ease and confidence.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-6">
+            <Link to="/properties" className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-7 py-3.5 text-sm font-bold text-stone-900 hover:bg-amber-200">
+              Explore Properties <ArrowRight size={16} />
+            </Link>
+            <button type="button" className="group inline-flex items-center gap-3 text-sm font-semibold">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 group-hover:bg-white/15">
+                <Play size={16} className="fill-white" />
+              </span>
+              Watch Video
+            </button>
           </div>
-          {/* HERO IMAGE: add your link to the `src` below */}
-          <Img src="" alt="Modern home exterior" className="h-80 w-full rounded-lg lg:h-[460px]" />
+        </div>
+
+        <div className="absolute inset-x-0 bottom-6 px-4">
+          <ul className="mx-auto grid max-w-3xl divide-y divide-white/20 rounded-xl bg-stone-900/80 px-4 py-2 backdrop-blur sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:py-4">
+            {trust.map(([Icon, t]) => (
+              <li key={t} className="flex items-center justify-center gap-3 px-4 py-3 text-sm sm:py-0">
+                <Icon size={22} className="shrink-0 text-amber-300" /> {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
