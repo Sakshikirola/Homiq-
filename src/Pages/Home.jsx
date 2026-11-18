@@ -1,14 +1,14 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Search, House, ShieldCheck, Tag, MessageCircle, Building2, Trees, BedDouble } from "lucide-react";
 import PropertyCard from "../Components/PropertyCard.jsx";
 import SectionTitle from "../Components/SectionTitle.jsx";
 import { properties, cities, types } from "../Data/properties.js";
+import HomeImage from "../Images/Home.jpeg";
 
 const typeIcons = { Apartment: Building2, Villa: Trees, House, Studio: BedDouble };
 
-const reasons = [
+const reasons = [ 
   [ShieldCheck, "Verified listings", "Every property is checked for ownership and accurate details before it goes live."],
   [Tag, "Clear pricing", "Prices are shown in full, with no hidden brokerage in the listing."],
   [MessageCircle, "Direct support", "Talk to a local agent who knows the neighbourhood and replies within a day."],
@@ -19,7 +19,7 @@ const field = "w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 te
 function Skyline() {
   const blocks = [[0, 90, 70], [80, 50, 110], [140, 120, 60], [210, 70, 90], [290, 30, 140], [330, 100, 80], [420, 60, 120], [490, 110, 70], [570, 40, 100], [620, 80, 130], [710, 20, 90], [750, 100, 60]];
   return (
-    <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMax slice" className="absolute inset-x-0 bottom-0 h-28 w-full text-ink-soft" aria-hidden="true">
+    <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMax slice" className="absolute inset-x-0 bottom-0 h-50 w-full text-ink-soft" aria-hidden="true">
       {blocks.map(([x, y, w], i) => (
         <g key={i}>
           <rect x={x} y={y + 20} width={w - 6} height={160 - y} fill="currentColor" opacity="0.55" />
@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-linear-to-br from-ink to-[#0a2a31] text-white">
+      <section className="relative flex min-h-120 items-center overflow-hidden bg-linear-to-br from-ink to-[#0a2a31] text-white lg:min-h-140">
         <Skyline />
         <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:grid-cols-2 sm:py-16">
           <div className="relative z-10">
@@ -76,7 +76,7 @@ export default function Home() {
 
           <div className="relative z-10 mx-auto w-full max-w-md">
             <div className="aspect-4/3 overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-2xl">
-              <img src="" alt="Featured property" className="h-full w-full object-cover" />
+              <img src={HomeImage} alt="Featured property" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

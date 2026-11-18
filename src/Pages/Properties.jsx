@@ -39,7 +39,6 @@ function PropertiesInner() {
   const blank = { ...start, q: "", status: "All", city: "All", type: "All", saved: false };
 
   const [f, setF] = useState(start);
-  // Changing Buy/Rent resets the budget, because the two use different price ranges.
   const set = (key, value) => setF((prev) => ({ ...prev, [key]: value, ...(key === "status" ? { max: 0 } : {}) }));
 
   const results = useMemo(() => {
@@ -144,8 +143,6 @@ function PropertiesInner() {
   );
 }
 
-// The key remakes the filters whenever the URL query changes
-// (for example when the header heart link or a Home type card is clicked).
 export default function Properties() {
   const { search } = useLocation();
   return <PropertiesInner key={search} />;
