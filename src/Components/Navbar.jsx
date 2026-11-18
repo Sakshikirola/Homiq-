@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Heart, Menu, X } from "lucide-react";
+import { Heart, Menu, X, PlusCircle } from "lucide-react";
 import Logo from "./Logo.jsx";
 import { useWishlist } from "../Context/WishlistContext.jsx";
 
@@ -47,6 +47,12 @@ export default function Navbar() {
               </span>
             )}
           </Link>
+          <Link
+            to="/post-property"
+            className="hidden items-center gap-2 rounded-full bg-brass px-4 py-2 text-sm font-bold text-ink hover:bg-[#d8a54f] sm:inline-flex"
+          >
+           <PlusCircle size={16} /> Post Property
+          </Link>
           <button
             type="button"
             className="rounded-full p-2.5 text-white hover:bg-white/15 md:hidden"
@@ -59,7 +65,13 @@ export default function Navbar() {
         </div>
       </div>
 
-      {open && <nav className="flex flex-col gap-4 bg-ink px-4 pb-6 pt-2 md:hidden" aria-label="Mobile">{navLinks}</nav>}
+      {open && (
+       <nav className="flex flex-col gap-4 bg-ink px-4 pb-6 pt-2 md:hidden" aria-label="Mobile">
+       {navLinks}
+       <Link to="/post-property" onClick={() => setOpen(false)} className="text-sm font-bold text-brass">Post Property</Link>
+       <Link to="/my-listings" onClick={() => setOpen(false)} className="text-sm font-semibold text-white/75">My Listings</Link>
+       </nav>
+      )}
     </header>
   );
 }

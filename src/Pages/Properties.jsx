@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { Search, SearchX } from "lucide-react";
 import PageHeader from "../Components/PageHeader.jsx";
 import PropertyCard from "../Components/PropertyCard.jsx";
-import { properties, cities, types } from "../Data/properties.js";
+import { useListings } from "../Context/ListingsContext.jsx";
 import { useWishlist } from "../Context/WishlistContext.jsx";
 
 const field =
@@ -25,6 +25,7 @@ const sorters = {
 function PropertiesInner() {
   const [sp] = useSearchParams();
   const { ids } = useWishlist();
+  const { all: properties, cities, types } = useListings();
 
   const start = {
     q: sp.get("q") || "",
@@ -54,7 +55,7 @@ function PropertiesInner() {
         (!f.saved || ids.includes(p.id))
     );
     return [...list].sort(sorters[f.sort]);
-  }, [f, ids]);
+  }, [f, ids, properties]);
 
   return (
     <>

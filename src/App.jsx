@@ -5,6 +5,9 @@ import Properties from "./Pages/Properties.jsx";
 import PropertyDetails from "./Pages/PropertyDetails.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
+import PostProperty from "./Pages/PostProperty.jsx";
+import MyListings from "./Pages/MyListings.jsx";
+
 
 function NotFound() {
   return ( 
@@ -27,6 +30,8 @@ export default function App() {
         <Route path="/properties/:id" element={<PropertyDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/post-property" element={<PostProperty />} />
+        <Route path="/my-listings" element={<MyListings />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

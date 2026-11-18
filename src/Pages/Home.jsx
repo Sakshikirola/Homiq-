@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Search, House, ShieldCheck, Tag, MessageCircle, Building2, Trees, BedDouble } from "lucide-react";
 import PropertyCard from "../Components/PropertyCard.jsx";
 import SectionTitle from "../Components/SectionTitle.jsx";
-import { properties, cities, types } from "../Data/properties.js";
+import { useListings } from "../Context/ListingsContext.jsx";
 import HomeImage from "../Images/Home.jpeg";
 
 const typeIcons = { Apartment: Building2, Villa: Trees, House, Studio: BedDouble };
@@ -35,6 +35,7 @@ function Skyline() {
 }
 
 export default function Home() {
+  const { all: properties, cities, types } = useListings();
   const navigate = useNavigate();
   const [q, setQ] = useState({ status: "Sale", city: "All", type: "All" });
   const featured = properties.filter((p) => p.featured);

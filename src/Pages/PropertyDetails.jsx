@@ -3,7 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { Heart, BedDouble, Bath, Ruler, Calendar, MapPin, Check, Phone, ChevronLeft } from "lucide-react";
 import Img from "../Components/Img.jsx";
 import PropertyCard from "../Components/PropertyCard.jsx";
-import { properties, formatPrice } from "../Data/properties.js";
+import { formatPrice } from "../Data/properties.js";
+import { useListings } from "../Context/ListingsContext.jsx";
 import { useWishlist } from "../Context/WishlistContext.jsx";
 
 const field =
@@ -11,6 +12,7 @@ const field =
 
 export default function PropertyDetails() {
   const { id } = useParams();
+  const { all: properties } = useListings();
   const p = properties.find((x) => x.id === Number(id));
   const { has, toggle } = useWishlist();
   const [active, setActive] = useState(0);
