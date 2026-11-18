@@ -3,6 +3,7 @@ import { ShieldCheck, MapPinned, Wallet } from "lucide-react";
 import Img from "../Components/Img.jsx";
 import PageHeader from "../Components/PageHeader.jsx";
 import SectionTitle from "../Components/SectionTitle.jsx";
+import aboutImage from "../Images/About.png";
 
 const stats = [["2,500+", "Homes listed"], ["8", "Cities covered"], ["1,200+", "Families settled"], ["4.8/5", "Average client rating"]];
 const values = [
@@ -26,7 +27,7 @@ export default function About() {
           </p>
         </div>
         {/* Add your own image link in src to replace the placeholder */}
-        <Img src="" alt="Homiq office" seed={2} className="h-72 w-full rounded-xl lg:h-96" />
+        <Img src={aboutImage} alt="Homiq office" seed={2} className="h-72 w-full rounded-xl lg:h-96" />
       </section>
 
       <section className="bg-ink">
